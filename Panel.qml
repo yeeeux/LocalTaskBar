@@ -680,7 +680,13 @@ Panel {
     MouseArea {
       anchors.fill: parent
       hoverEnabled: true
-      onContainsMouseChanged: if (containsMouse) {
+      // onPositionChanged, not onContainsMouseChanged: a priority change
+      // resorts the list, so rows shift under a pointer that never actually
+      // moved — Qt Quick still re-evaluates containsMouse on that relayout,
+      // which would silently steal the cursor set a moment earlier by
+      // reselect() and hand it to whatever row now sits under the stationary
+      // pointer. positionChanged only fires on real motion.
+      onPositionChanged: {
         root.cursorActive = true
         root.selectedIndex = row.rowIndex
         if (!row.armedForDelete) root.pendingDeleteId = ""
