@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "gordeev.tasks",
+  "name": "Tasks",
+  "version": "1.0.0",
+  "author": "gordeev",
+  "description": "Task checklist pill: add tasks with a priority, done tasks drop out of view",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Tasks",
+    "description": "Checklist of tasks with priority",
+    "category": "Productivity",
+    "allowMultiple": false
+  }
+}
